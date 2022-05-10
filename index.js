@@ -5,7 +5,6 @@ const MUSTACHE_MAIN_DIR = './main.mustache';
 const {
     convertAll
 } = require('bpmn-to-image');
-const imgur = require('imgur');
 
 /**
  * DATA is the object that contains all
@@ -42,15 +41,19 @@ function generateReadMe() {
 
 function saveBpmnImage() {
     const processFile = 'src/main/resources/pizza-collaboration.bpmn';
-    const processImgFile = processFile.replace("bpmn", "png");
+    const processImgFile = processFile.replace(".bpmn", ".png");
+    const processImgFileContent = '';
+
     convertAll([
         {
             input: processFile,
-            outputs: [processImgFile]
+            outputs: [processImgFileContent]
         }
     ]);
 
-    response = imgur.uploadFile(processImgFile);
+    fs.writeFileSync(processImgFile, processImgFileContent);
+
+    generateReadMe();
 }
 
 saveBpmnImage();
