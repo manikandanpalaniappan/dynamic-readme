@@ -1,4 +1,4 @@
-![Processfile](src&#x2F;main&#x2F;resources&#x2F;bpmn&#x2F;antragsverarbeitung-v1.png)
+![Processfile](src&#x2F;main&#x2F;resources&#x2F;bpmn&#x2F;pizza-collaboration.png)
 
 Steps:
 
@@ -10,6 +10,8 @@ https://github.com/pinussilvestrus/github-bpmn/tree/master/probot-app
 
 https://medium.com/swlh/how-to-create-a-self-updating-readme-md-for-your-github-profile-f8b05744ca91
 https://github.com/thmsgbrt/thmsgbrt
+
+Hint: Image Generation will be started on every merge to master branch
 
 Misc Links:
 
