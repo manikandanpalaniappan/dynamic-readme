@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/manikandanpalaniappan/dynamic-readme#readme",
   "dependencies": {
-    "bpmn-js": "^9.0.3",
-    "jquery": "^3.6.0",
-    "mustache": "^4.0.1"
+    "bpmn-to-image": "^0.6.1",
+    "mustache": "^4.2.0",
+    "imgur": "^1.0.0"
   }
 }

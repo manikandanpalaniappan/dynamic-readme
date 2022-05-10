@@ -1,9 +1,9 @@
 // index.js
 const Mustache = require('mustache');
-const BpmnJS = require('bpmn-js');
-const jquery = require('jquery');
 const fs = require('fs');
 const MUSTACHE_MAIN_DIR = './main.mustache';
+const convertImage = require('bpmn-to-image');
+const imgur = require('imgur');
 
 /**
  * DATA is the object that contains all
@@ -29,33 +29,26 @@ let DATA = {
  * C - We create a README.md file with the generated output
  */
 function generateReadMe() {
-    fs.readFile(MUSTACHE_MAIN_DIR, (err, data) =>  {
+    fs.readFile(MUSTACHE_MAIN_DIR, (err, data) => {
         if (err) throw err;
         const output = Mustache.render(data.toString(), DATA);
         fs.writeFileSync('README.md', output);
     });
 }
 
-
 // generateReadMe();
 
-const viewer = new BpmnJS();
-
-// attach it to some element
-viewer.attachTo('#container');
-
-function renderBpmn() {
-    var url = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/url-viewer/resources/pizza-collaboration.bpmn';
-
-    $.jquery.ajax(url, {dataType : 'text'}).done(async function(xml) {
-
-        try {
-            await viewer.importXML(xml)
-            viewer.get('canvas').zoom('fit-viewport');
-        } catch (err) {
-            console.error(err);
+function saveBpmnImage() {
+    const processFile = 'src/main/resources/pizza-collaboration.bpmn';
+    const processImgFile = processFile.replace("bpmn", "png");
+    convertImage([
+        {
+            input: processFile,
+            outputs: [processImgFile]
         }
-    });
+    ]);
+
+    response = imgur.uploadFile(processImgFile);
 }
 
-renderBpmn();
+saveBpmnImage();
