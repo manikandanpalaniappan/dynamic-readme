@@ -1,5 +1,7 @@
 // index.js
 const Mustache = require('mustache');
+const BpmnJS = require('bpmn-js');
+const jquery = require('jquery');
 const fs = require('fs');
 const MUSTACHE_MAIN_DIR = './main.mustache';
 
@@ -45,7 +47,7 @@ var viewer = new BpmnJS({
 function renderBpmn() {
     var url = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/url-viewer/resources/pizza-collaboration.bpmn';
 
-    $.ajax(url, {dataType : 'text'}).done(async function(xml) {
+    $.jquery.ajax(url, {dataType : 'text'}).done(async function(xml) {
 
         try {
             await viewer.importXML(xml);
