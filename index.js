@@ -9,9 +9,9 @@ const {
 saveBpmnImage();
 
 function saveBpmnImage() {
-    const processFile = 'src/main/resources/bpmn/antragsverarbeitung-v1.bpmn';
-    const processImgFile = processFile.replace(".bpmn", ".png");
-    const processImgFileContent = '';
+    var processFile = 'src/main/resources/bpmn/antragsverarbeitung-v1.bpmn';
+    var processImgFile = processFile.replace(".bpmn", ".png");
+    var processImgFileContent = '';
 
     convertAll([
         {
@@ -24,8 +24,9 @@ function saveBpmnImage() {
 
     generateReadMe(processFile, processImgFile);
 }
-function generateReadMe(processname, processimagepath) {
-    let DATA = {
+
+function generateReadMe(processImgFile, processimagepath) {
+    var DATA = {
         name: 'Mani',
         processname: processImgFile,
         processimagepath: processimagepath
