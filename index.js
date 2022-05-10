@@ -40,7 +40,7 @@ function generateReadMe() {
 // generateReadMe();
 
 function saveBpmnImage() {
-    const processFile = 'src/main/resources/pizza-collaboration.bpmn';
+    const processFile = './src/main/resources/pizza-collaboration.bpmn';
     const processImgFile = processFile.replace(".bpmn", ".png");
     const processImgFileContent = '';
 
