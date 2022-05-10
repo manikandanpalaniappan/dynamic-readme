@@ -2,7 +2,9 @@
 const Mustache = require('mustache');
 const fs = require('fs');
 const MUSTACHE_MAIN_DIR = './main.mustache';
-const convertImage = require('bpmn-to-image');
+const {
+    convertImage
+} = require('bpmn-to-image');
 const imgur = require('imgur');
 
 /**
