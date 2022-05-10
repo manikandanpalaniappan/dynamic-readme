@@ -6,41 +6,10 @@ const {
     convertAll
 } = require('bpmn-to-image');
 
-/**
- * DATA is the object that contains all
- * the data to be provided to Mustache
- * Notice the "name" and "date" property.
- */
-let DATA = {
-    name: 'Mani',
-    date: new Date().toLocaleDateString('en-GB', {
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        timeZoneName: 'short',
-        timeZone: 'Europe/Berlin',
-    }),
-};
-
-/**
- * A - We open 'main.mustache'
- * B - We ask Mustache to render our file with the data
- * C - We create a README.md file with the generated output
- */
-function generateReadMe() {
-    fs.readFile(MUSTACHE_MAIN_DIR, (err, data) => {
-        if (err) throw err;
-        const output = Mustache.render(data.toString(), DATA);
-        fs.writeFileSync('README.md', output);
-    });
-}
-
-// generateReadMe();
+saveBpmnImage();
 
 function saveBpmnImage() {
-    const processFile = './src/main/resources/pizza-collaboration.bpmn';
+    const processFile = 'src/main/resources/bpmn/antragsverarbeitung-v1.bpmn';
     const processImgFile = processFile.replace(".bpmn", ".png");
     const processImgFileContent = '';
 
@@ -53,7 +22,17 @@ function saveBpmnImage() {
 
     fs.writeFileSync(processImgFile, processImgFileContent);
 
-    generateReadMe();
+    generateReadMe(processFile, processImgFile);
 }
-
-saveBpmnImage();
+function generateReadMe(processname, processimagepath) {
+    let DATA = {
+        name: 'Mani',
+        processname: processImgFile,
+        processimagepath: processimagepath
+    };
+    fs.readFile(MUSTACHE_MAIN_DIR, (err, data) => {
+        if (err) throw err;
+        const output = Mustache.render(data.toString(), DATA);
+        fs.writeFileSync('README.md', output);
+    });
+}
