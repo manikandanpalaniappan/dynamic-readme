@@ -3,7 +3,7 @@ const Mustache = require('mustache');
 const fs = require('fs');
 const MUSTACHE_MAIN_DIR = './main.mustache';
 const {
-    convert
+    convertAll
 } = require('bpmn-to-image');
 const imgur = require('imgur');
 
@@ -43,7 +43,7 @@ function generateReadMe() {
 function saveBpmnImage() {
     const processFile = 'src/main/resources/pizza-collaboration.bpmn';
     const processImgFile = processFile.replace("bpmn", "png");
-    convert([
+    convertAll([
         {
             input: processFile,
             outputs: [processImgFile]
