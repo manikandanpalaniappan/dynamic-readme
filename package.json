@@ -19,7 +19,6 @@
   "homepage": "https://github.com/manikandanpalaniappan/dynamic-readme#readme",
   "dependencies": {
     "bpmn-to-image": "^0.6.1",
-    "mustache": "^4.2.0",
-    "imgur": "^1.0.0"
+    "mustache": "^4.2.0"
   }
 }

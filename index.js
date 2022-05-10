@@ -8,27 +8,23 @@ const {
 
 saveBpmnImage();
 
-function saveBpmnImage() {
+async function saveBpmnImage() {
     var processFile = 'src/main/resources/bpmn/antragsverarbeitung-v1.bpmn';
     var processImgFile = processFile.replace(".bpmn", ".png");
-    var processImgFileContent = '';
 
-    convertAll([
+    await convertAll([
         {
             input: processFile,
-            outputs: [processImgFileContent]
+            outputs: [processImgFile]
         }
     ]);
 
-    fs.writeFileSync(processImgFile, processImgFileContent);
-
-    generateReadMe(processFile, processImgFile);
+    generateReadMe(processImgFile);
 }
 
-function generateReadMe(processImgFile, processimagepath) {
+function generateReadMe(processimagepath) {
     var DATA = {
         name: 'Mani',
-        processname: processImgFile,
         processimagepath: processimagepath
     };
     fs.readFile(MUSTACHE_MAIN_DIR, (err, data) => {
