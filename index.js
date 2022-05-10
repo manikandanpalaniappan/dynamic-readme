@@ -24,7 +24,6 @@ async function saveBpmnImage() {
 
 function generateReadMe(processimagepath) {
     var DATA = {
-        name: 'Mani',
         processimagepath: processimagepath
     };
     fs.readFile(MUSTACHE_MAIN_DIR, (err, data) => {
