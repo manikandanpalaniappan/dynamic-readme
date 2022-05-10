@@ -9,7 +9,7 @@ const {
 saveBpmnImage();
 
 async function saveBpmnImage() {
-    var processFile = 'src/main/resources/bpmn/antragsverarbeitung-v1.bpmn';
+    var processFile = 'src/main/resources/bpmn/pizza-collaboration.bpmn';
     var processImgFile = processFile.replace(".bpmn", ".png");
 
     await convertAll([
