@@ -10,7 +10,7 @@ const MUSTACHE_MAIN_DIR = './main.mustache';
  */
 let DATA = {
     name: 'Mani',
-    date: new Date().toLocaleDateString('de-DE', {
+    date: new Date().toLocaleDateString('en-GB', {
         weekday: 'long',
         month: 'long',
         day: 'numeric',
@@ -34,4 +34,26 @@ function generateReadMe() {
     });
 }
 
-generateReadMe();
+
+// generateReadMe();
+
+var viewer = new BpmnJS({
+    container: $('#js-canvas'),
+    height: 600
+});
+
+function renderBpmn() {
+    var url = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/url-viewer/resources/pizza-collaboration.bpmn';
+
+    $.ajax(url, {dataType : 'text'}).done(async function(xml) {
+
+        try {
+            await viewer.importXML(xml);
+            viewer.get('canvas').zoom('fit-viewport');
+        } catch (err) {
+            console.error(err);
+        }
+    });
+}
+
+renderBpmn();
